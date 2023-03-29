@@ -1,0 +1,34 @@
+public class Main {
+
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println("Para n = " + n);
+        System.out.println("Forma iterativa");
+        long inicio = System.nanoTime();
+        System.out.println("n = " + fibIterativo(n));
+        long fin = System.nanoTime() - inicio;
+        System.out.println("Tarda: " + fin + " nano segundos");
+
+        System.out.println("Forma recursiva");
+        inicio = System.nanoTime();
+        System.out.println("n = " + fibRecursiva(n));
+        fin = System.nanoTime() - inicio;
+        System.out.println("Tarda: " + fin + " nano segundos");
+    }
+
+    private static int fibIterativo(int n) {
+        if (n == 1 || n==2) return 1;
+        int a = 1, b = 1, c = 0;
+        for (int i = 3; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return c;
+    }
+
+    private static int fibRecursiva(int n) {
+        if (n == 1 || n == 2) return 1;
+        return fibRecursiva(n - 1) + fibRecursiva(n - 2);
+    }
+}
